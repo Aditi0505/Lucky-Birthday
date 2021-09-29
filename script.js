@@ -9,15 +9,18 @@ var outputText = document.querySelector("#output");
 btnCheck.addEventListener("click", clickHandler);
 
 function clickHandler() {
-  var birthdayDigits = birthdayInput.value.replace(/-/g, 0);
-  console.log(birthdayDigits);
-  var sum = 0;
-  for (var i = 0; i < birthdayDigits.length; i++) {
-    sum = sum + Number(birthdayDigits[i]);
-  }
-  if (sum % luckyInput.value === 0) {
-    outputText.innerText = "Your Birthday is Lucky! 🔮";
+  if (birthdayInput.value === "" || luckyInput.value === "") {
+    outputText.innerText = "Please fill out both the fields!";
   } else {
-    outputText.innerText = "Your Birthday is not that Lucky! 😯";
+    var birthdayDigits = birthdayInput.value.replace(/-/g, 0);
+    var sum = 0;
+    for (var i = 0; i < birthdayDigits.length; i++) {
+      sum = sum + Number(birthdayDigits[i]);
+    }
+    if (sum % luckyInput.value === 0) {
+      outputText.innerText = "Your Birthday is Lucky! 🔮";
+    } else {
+      outputText.innerText = "Your Birthday is not that Lucky! 😯";
+    }
   }
 }
